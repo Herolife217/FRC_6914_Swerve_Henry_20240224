@@ -77,6 +77,7 @@ public class Arm extends SubsystemBase{
         encoder.setInverted; */
        // strict followers ignore the leader's invert and use their own
         right.setControl(new StrictFollower(left.getDeviceID()));
+        // creates PID values for motor (hopefully)
         var slot0Configs = new Slot0Configs();
         slot0Configs.kP = ArmConstants.kP;
         slot0Configs.kI = ArmConstants.kI;
