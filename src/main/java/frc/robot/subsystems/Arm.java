@@ -37,7 +37,7 @@ import frc.robot.Constants.ArmConstants;
 
 public class Arm extends SubsystemBase{
 
-    /*We need methods to run the arm to postions using a rev throughbore encoder in absolute mode.
+    /*We need methods to run the arm to positions using a rev throughbore encoder in absolute mode.
      * It is needed to read arm position and to move the arm.
      */
     private final TalonFX left;
@@ -102,7 +102,7 @@ public class Arm extends SubsystemBase{
     public void hold(TrapezoidProfile.State setpoint) {
         double feedforward = ff.calculate(setpoint.position*2*Math.PI, setpoint.velocity);
         //figure out how to convert the below part to phoenix 6
-        armPID.setReference(setpoint.position, ControlType.kPosition,0, feedforward);
+            left.setPosition(setpoint, 1);
     }
 
     public void runToPosition(double setpoint) {
@@ -117,7 +117,7 @@ public class Arm extends SubsystemBase{
         }
         else{
         //figure out how to convert the below part to phoenix 6
-            armPID.setReference(setpoint, ControlType.kPosition);
+            left.setPosition(setpoint, 0);
         }
     }
 
